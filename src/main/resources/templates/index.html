@@ -22,6 +22,8 @@ th:src="@{/webjars/jquery/2.1.3/jquery.min.js}"></script>
  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
  th:src="@{/webjars/bootstrap/3.3.1/js/bootstrap.min.js}"></script>
 <script th:src="@{/functions.js}" src="../static/functions.js"></script>
+<script 
+th:src="@{/webjars/mustachejs/0.7.0/mustache.js}"></script>
 <!-- Latest compiled and minified JavaScript -->
 </head>
 <body>
@@ -50,7 +52,21 @@ th:src="@{/webjars/jquery/2.1.3/jquery.min.js}"></script>
    </div>
   </form>
   <div class="row">&nbsp;</div>
-  <div id="resultsBlock"></div>  
+  <div id="resultsBlock">
+  	<div class="row panel panel-default" th:each="tweet: ${res.tweets}">
+  		<div class="panel-heading">
+   			<a href="https://twiter.com/{{user}} {{fromUser}})}" 
+    		target="_blank"><b>{{fromUser}}</b></a>
+   		<div class="pull-right">
+    		<a
+     		href="https://twiter.com/{{user}}/status/{id}(user=${tweet.fromUser},id=${tweet.id})}"
+     		target="_blank"><span class="glyphicon glyphicon-link"></span></a>
+   		</div>
+  	</div>
+  	<div class="panel-body" th:text="${tweet.unmodifiedText}">CR28: iguala el record de Messi en la
+   		primera vuelta http://t.co/zmYnja4gYP vía @marca</div>
+ 	</div>
+ </div>  
  </div>
 </body>
 </html>
