@@ -5,9 +5,11 @@ $(document).ready(function() {
 function registerSearch() {
 	$("#search").submit(function(ev){
 		event.preventDefault();
-		$.get($(this).attr('action'), {q: $("#q").val()}, function(data) {
-			$("#resultsBlock").empty().append(data);
-		});	
+		$.getJSON($(this).attr('action'), {q: $("#q").val()}, function(data) {
+		    var template = $('#tweets').html();
+		    var info = Mustache.to_html(template, data);
+		    $("#resultsBlock").empty().append(info);
+		});
 	});
 }
 
